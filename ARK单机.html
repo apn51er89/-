@@ -1,0 +1,784 @@
+<!-- 会用用，不会用垃圾吧倒 -->
+<!-- 有问题查vant文档，https://youzan.github.io/vant/v2/#/zh-CN/home -->
+<!-- 善用搜索引擎，别几把问题就叫叫叫 -->
+<!-- 有bug请先尝试自己解决 -->
+
+<!DOCTYPE html>
+<html>
+
+<head> 
+   
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="https://unpkg.com/vant@2.12/lib/index.css" />
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://unpkg.com/vue@2.6/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vant@2.12/lib/vant.min.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /*菜单*/
+        *:not(input, checkbox, textarea) {
+            /*禁止文本选择*/
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Non-prefixed version, currently */
+        }
+
+        .aymenu {
+            position: fixed;
+            width: 340px;
+            height: 270px;
+            top: calc(50% - 180px);
+            left: calc(50% - 180px);
+            z-index: 999;
+            background-color: #F7F8FA;
+            border-radius: 8px;
+            overflow: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .fun-block__title {
+            margin: 0;
+            padding: 32px 16px 16px;
+            color: rgba(69, 90, 100, 0.6);
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        .van-cell {
+            line-height: unset;
+        }
+
+        .menuBody {
+            overflow-y: auto;
+            padding-bottom: 40px;
+        }
+      
+         .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 35%; 
+            left: 13px; 
+            width: 280px; 
+            height: 180px; 
+            padding: 20px; 
+            border-radius: 10px;
+            background-size: 400%;
+            animation: bganimation 15s infinite;
+                        background-image: linear-gradient(270deg, rgba(85,119,154,.75) 10.0%, rgba(176,252,255,.75) 50.0%, rgba(33,204,51,.75) 100.0%);
+            z-index:1002; 
+            overflow: auto; 
+        } 
+
+      .ay{
+text-align:center; 
+}
+              @keyframes bganimation {
+            0%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            100%{
+                background-position: 0% 50%;
+            }
+        }
+ 
+  </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="aymenu" ref="menuMain">
+            <div @touchstart="titleTouchStart" @touchmove="titleTouchMove">
+                <van-nav-bar title="阿雅单机科技">
+                    <template #left>
+                         <!-- 隐式跳转到qq使用iframe -->
+                        <iframe id="jumpQQ" src="" frameborder="0" style="display: none;"></iframe>
+                        <van-image @click="jumpQQ" round width="28px" height="28px"
+src="https://q.qlogo.cn/g?b=qq&nk=506727230&s=100"/>
+                 </template>
+ 
+                               <template #right>
+                        <van-icon @click="closeMenu" name="close" size="18" />
+                           
+            
+                  </template>
+                </van-nav-bar>
+                  </div>
+           <div class="menuBody" ref="menuBody"> 
+                <div>
+                    <h2 class="fun-block__title" style="padding-top: 20px;">基础功能</h2>
+                    <van-cell-group inset>
+                     <van-cell title="">
+                            <template #label>
+                                <div style="padding: 15px 0px;">
+
+  <input type="range" id="slider1" min="1" max="6" step="0.001" value="1" style="width:67%" />
+
+<front style="position:relative;
+top:-6px;
+    font-weight: 550;  "class="aY">ARK单机视距</front>
+
+                         <br><br>
+
+                                  
+                                    <van-button type="default" size="mini"onclick="f1()">无限礼包</van-button>
+                                    <van-button type="default" size="mini"onclick="f2()">无限琥珀</van-button>
+                                    <van-button type="default" size="mini"onclick="f3()">无限道具</van-button>
+                                           <van-button type="default" size="mini"onclick="f4()">一键升级</van-button>
+
+<br><br>
+                                    <van-button type="default" size="mini"onclick="f5()">基本材料</van-button>                                                                                                   
+                                    <van-button type="default" size="mini"onclick="f6()">身体颜色</van-button>
+ 		
+ <van-button type="default" size="mini"href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">无中生有
+</van-button>
+       
+  <van-button type="default" size="mini"onclick="fc()">秒吃粉尘</van-button>                           
+	   <br><br>
+                                  
+ <van-button type="default" size="mini"onclick="T1()">台子点数</van-button>                                  
+
+                              
+  <van-button type="default" size="mini"href = "javascript:void(0)" onclick = "document.getElementById('light1').style.display='block';document.getElementById('fade1').style.display='block'">指针扫描
+</van-button>                                
+<br><br>
+
+
+<p>视频区</p>
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+</div>
+                              
+                                  </template>
+                        </van-cell>
+                    </van-cell-group>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    switchValue: false,
+                    sliderValue: 0,
+                }
+            },
+            mounted() {
+                this.setRect(340, 270);
+            },
+            methods: {
+                setRect(w, h, x = -1, y = -1) {
+                    var boxW = w;
+                    var boxH = h;
+
+                    var ayMenu = this.$refs.menuMain;
+                    ayMenu.style.width = `${boxW}px`;
+                    ayMenu.style.height = `${boxH}px`;
+                    if (x == -1) ayMenu.style.left = `calc(50% - ${boxW / 2}px)`;
+                    if (y == -1) ayMenu.style.top = `calc(50% - ${boxH / 2}px)`;
+
+
+                    var menuBody = this.$refs.menuBody;
+                    menuBody.style.height = `${boxH - 46 - 40}px`;
+                },
+                titleTouchStart(event) {
+                    this.touchStartX = parseInt(event.touches[0].clientX);
+                    this.touchStartY = parseInt(event.touches[0].clientY);
+
+                    var ayMenu = this.$refs.menuMain;
+                    this.menuLastX = ayMenu.offsetLeft;
+                    this.menuLastY = ayMenu.offsetTop;
+                },
+                titleTouchMove(event) {
+                    event.preventDefault();
+                    var distanceX = event.touches[0].clientX - this.touchStartX;
+                    var distanceY = event.touches[0].clientY - this.touchStartY;
+
+                    var ayMenu = this.$refs.menuMain;
+                    ayMenu.style.left = this.menuLastX + distanceX + "px";
+                    ayMenu.style.top = this.menuLastY + distanceY + "px";
+                },
+                
+                             jumpQQ() {
+                     var qqGroupElem = document.createElement("input");
+            qqGroupElem.value = "506727230";
+            document.body.appendChild(qqGroupElem);
+            qqGroupElem.select();
+            document.execCommand("Copy");
+            document.body.removeChild(qqGroupElem);
+            vant.Toast("QQ交流群复制成功");
+                },
+                closeMenu() {
+                    var menu = document.querySelector("#app");
+                    menu.style.display = "none";
+                    setWindowTouch(false);
+                },
+            }
+        });
+
+   
+        //设置不可拖动
+        setWindowDrag(0, 0, 0, 0);
+
+        var layout = function () {
+            //window.orientation是设备握持方向, 不是屏幕显示方向
+            if (window.lastorientation == window.orientation) return;
+            window.lastorientation = window.orientation;
+
+            //window.screen中的宽高不会随着屏幕旋转更新(只会在初始化的时候固定)
+            if (Math.abs(window.orientation) == 90) {
+                //横屏模式
+                setWindowRect(0, 0, window.screen.height, window.screen.width);
+            } else {
+                //竖屏模式
+                setWindowRect(0, 0, window.screen.width, window.screen.height);
+            }
+        }
+
+        layout(); //设置旋转屏幕时自动调整布局和画布
+        window.addEventListener("orientationchange", layout, false);
+
+        //*设置自定义的悬浮按钮图标点击动作
+        setButtonAction(function () {
+            var menu = document.querySelector("#app");
+            if (menu.style.display == "none") {
+                menu.style.display = "block";
+                //隐藏菜单之后, 设置触控穿透悬浮窗口
+                setWindowTouch(true);
+            } else {
+                menu.style.display = "none";
+                //显示菜单之后, 设置触控不可穿透悬浮窗口
+                setWindowTouch(false);
+            }
+        });
+            
+setButtonImage("https://s3.bmp.ovh/imgs/2022/08/07/5c94a22fa902b798.png");
+    </script>
+  
+     <div id="light" class="white_content">		
+			<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">返回</a>	
+       <br>
+       <p class="ay">阿雅基址复制</p>
+       <br><br>
+<van-button onclick="o1()">✧彩虹炮台✧ </van-button>
+<van-button onclick="o2()">✧泰克地基✧ </van-button>
+<van-button onclick="o3()">✧泰克墙板✧ </van-button>
+       <br><br>
+<van-button onclick="o4()">✧泰克房顶✧ </van-button>
+<van-button onclick="o5()">✧泰克门框✧ </van-button>
+<van-button onclick="o6()">✧泰克小门✧ </van-button>
+       <br><br>
+<van-button onclick="o7()">泰克发电机✧ </van-button>
+<van-button onclick="o8()">泰克传送器✧ </van-button>
+<van-button onclick="o9()">泰克转换器 </van-button>
+       <div id="fade" class="black_overlay"></div>
+ </div>                                   
+
+  
+  
+  
+   <div id="light1" class="white_content">		
+			<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">返回</a>	  
+  
+ <van-button onclick="nok()">指针扫描</van-button>    
+     
+     
+         <div id="fade1" class="black_overlay"></div>
+ </div>                                   
+
+  
+  <script>
+    function nok(){
+      
+    
+h5gg.require(7.6);
+
+var sleep = (timeountMS) => new Promise((resolve) => {
+    setTimeout(resolve, timeountMS);
+  });
+
+var localizedString = {
+    "自动搜索指针链" : "AutoSearchPointerChains",
+    "请输入要搜索的数据地址(0x开头十六进制)" : "Please enter the data address to be searched (hex starting with 0x)",
+    "请输入最大搜索偏移(0x开头十六进制)" : "Please enter the max search offset (hex starting with 0x)",
+    "请输入最大搜索层数" : "Please enter the max search level",
+    "当开始搜索之后, 建议将设备放入冰箱以防止过热降频, 可以加快搜索." : "After starting the search, it is recommended to put the device in the refrigerator to prevent overheating and frequency reduction, which can speed up the search.",
+    "无效的数据地址, 无法读取该地址" : "Invalid data address, the address cannot be read!",
+};
+
+function Localized(str) {
+    if(navigator.language.indexOf("zh-")==0)
+        return str;
+    return localizedString[str];
+}
+
+//***********************************************************
+(async () => {
+
+await sleep(200);
+
+var minOffset = 0;
+    
+var versionInfo = "(v7)";
+
+var dataAddress = Number(prompt(Localized("请输入要搜索的数据地址(0x开头十六进制)")));
+if(!dataAddress) return alert("输入的参数有误\n\nIncorrect parameter entered");
+if(h5gg.getValue(dataAddress, "I8")=="") return alert(Localized("无效的数据地址, 无法读取该地址"));
+var maxOffset = Number(prompt(Localized("请输入最大搜索偏移(0x开头十六进制)")));
+if(!maxOffset) return alert("输入的参数有误\n\nIncorrect parameter entered");
+var maxLevel = Number(prompt(Localized("请输入最大搜索层数")));
+if(!maxLevel) return alert("输入的参数有误\n\nIncorrect parameter entered");
+
+alert(Localized("当开始搜索之后, 建议将设备放入冰箱以防止过热降频, 可以加快搜索."));
+    
+/*/////////////////////////////////////////////////////////////
+
+//*********************************************************************/
+
+var AppModules = [];
+var FoundChains = [];
+
+var allmodules = h5gg.getRangesList();
+for(var i=0; i<allmodules.length; i++)
+{
+    if(Number(allmodules[i].end)!=0 && allmodules[i].name.indexOf("/var/")!=-1) {
+        allmodules[i].name = allmodules[i].name.replace(/(.+)\/([^\/]+)$/, "$2");
+        AppModules.push(allmodules[i]);
+    }
+}
+
+window.closeAutoSearchOffset = function() {
+    $("#asopage").hide();
+}
+
+window.stopAutoSearchOffset = false;
+window.pauseAutoSearchOffset = false;
+
+function showlog(msg)
+{
+    console.log(msg);
+
+    if($("#asopage").length==0) {
+        var popup_progress_html = $('<div id="asopage" class="scrollbar" style="background-color: #FDFDFD; width:100%; height:100%; position:absolute; left:0; top:0; border:1px solid #B8B8B880; border-radius: 5px; padding: 0px; z-index: 99999;-webkit-user-select: all;-webkit-touch-callout: default;"></div>');
+        $(document.body).append(popup_progress_html);
+    }
+
+    var html = msg;
+
+    if(!window.stopAutoSearchOffset) {
+        if(window.pauseAutoSearchOffset)
+            html += "<br/><button onclick='window.stopAutoSearchOffset=true;'>停止Stop</button><button onclick='window.pauseAutoSearchOffset=false;'>继续Continue</button>";
+        else
+            html += "<br/><button ontouchstart='window.stopAutoSearchOffset=true;'>停止Stop</button><button ontouchstart='window.pauseAutoSearchOffset=true;'>长按暂停Pause(LongPress)</button>";
+    }
+
+    html += "<br/><br/>已找到"+FoundChains.length+"条指针链(Found "+FoundChains.length+" chian(s)).";
+ 
+    if(FoundChains.length>0) {
+        for(var n=FoundChains.length; n>0; n--) {
+            html += "<br/>[" + n + "] "+FoundChains[n-1];
+        }
+    }
+
+    if(window.stopAutoSearchOffset) html += "<br/><br/><button onclick='window.closeAutoSearchOffset()'>关闭Close</button>";
+
+    $("#asopage").html(html);
+    $("#asopage").show();
+}
+
+function checkInModule(address, chain)
+{
+    for(var i=0; i<AppModules.length; i++)
+    {
+        address = Number(address);
+        if(address>Number(AppModules[i].start) && address<Number(AppModules[i].end))
+        {
+            var offset = address - Number(AppModules[i].start);
+            var info = AppModules[i].name + ":0x" + offset.toString(16);
+            if(chain.length>0) info += " -> " + chain.join(" -> ");
+            //showlog("找到偏移链 "+info);
+            FoundChains.push(info);
+            //throw "ok";
+        }
+    }
+}
+
+showlog(Localized("自动搜索指针链")+" "+versionInfo+"<br/>");
+await sleep(200);
+
+var gLevelResults = [ { addr:dataAddress, chain:[] } ];
+
+for(var level=0; level<maxLevel; level++)
+{
+    var LevelResults = gLevelResults;
+    gLevelResults = [];
+
+    showlog("开始搜索第"+(level+1)+"层...<br/>search...level="+(level+1));
+
+    for(var i=0; i<LevelResults.length; i++)
+    {
+        var dataAddress = LevelResults[i].addr;
+        var chain = LevelResults[i].chain;
+
+        var start = Number(dataAddress) - maxOffset;
+        var end = Number(dataAddress) - minOffset;
+
+        h5gg.clearResults();
+        h5gg.searchNumber(Number(start)+'~'+Number(end), "U64", "0x0", "0xFFFFFFFF00000000");
+        var count = h5gg.getResultsCount();
+
+        await sleep(100);
+
+        var info = "搜索第"+(level+1)+"层第"+(i+1)+"/"+LevelResults.length+"个指针=>"+gLevelResults.length+"+"+count;
+        info += "<br/>searching...level="+(level+1)+",index="+(i+1)+"/"+LevelResults.length+"=>"+gLevelResults.length+"+"+count;
+        showlog(info);
+        
+        var paused = window.pauseAutoSearchOffset;
+
+        while(true)
+        {
+            if(!window.pauseAutoSearchOffset || window.stopAutoSearchOffset) {
+                if(paused && !window.pauseAutoSearchOffset) {
+                    showlog("继续搜索Continue Search...");
+                    await sleep(200);
+                }
+                break;
+            }
+            await sleep(100);
+        }
+        
+        if(window.stopAutoSearchOffset) break;
+
+        var results = h5gg.getResults(count);
+
+        results.map(function(obj) {
+            var p = Number(obj.value);
+            if(p<start || p>end) return; //filter h5gg itself data and invalid data
+            if(level>0 && (p%8)>0) return; //filter unaligned pointer
+            var offset = Number(dataAddress) - p;
+            offset = '0x'+offset.toString(16);
+            var chain2 = [offset, ...chain];
+            checkInModule(obj.address, chain2);
+            gLevelResults.push({addr:obj.address, chain:chain2});
+            // obj.value='0x'+p.toString(16);
+            // return obj;
+        });
+
+        //console.log(results);
+    }
+
+    if(window.stopAutoSearchOffset) break;
+
+    //console.log(LevelResults);
+}
+
+window.stopAutoSearchOffset = true;
+
+showlog("搜索完毕(Search Done)");
+
+FoundChains = [];
+AppModules = [];
+gLevelResults = [];
+
+})();}
+
+
+
+
+</script>
+  <script>
+
+    
+                      
+element1 = document.getElementById('slider1');
+element1.addEventListener('input', t1);
+
+  var X = h5gg.getRangesList('ShooterGame');
+ 
+ 
+    function T1() {  
+fz = Number(X[0].start) + 0x44e9648;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0x130;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0x20;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xf5c;
+h5gg.setValue(fz,1314520,'I32');
+   
+fz1 = Number(X[0].start) + 0x44e9648;
+fz1 = Number(h5gg.getValue(fz1, 'I64')) + 0x130;
+fz1 = Number(h5gg.getValue(fz1, 'I64')) + 0x20;
+fz1 = Number(h5gg.getValue(fz1, 'I64')) + 0xf5c;
+h5gg.setValue(fz1,1314521,'I32');
+  
+var fz = Number(X[0].start) + 0x44e9648;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0x108;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0x920;  
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xf5c;
+h5gg.setValue(fz,1314520, 'I32');
+  
+var jz3 = Number(X[0].start) + 0x44e9648;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x130;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x20;  
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xf5c;                   
+h5gg.setValue(jz3,1314520, 'I32');
+vant.Toast("修改成功");
+}
+    
+   
+    
+    
+function o1(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,292, 'I32');
+}
+    
+function o2(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,306, 'I32');
+}  
+  
+function o3(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,322, 'I32');
+}  
+    
+ function o4(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,309, 'I32');
+}  
+       
+ function o5(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,308, 'I32');
+}
+ function o6(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,307, 'I32');
+}
+    
+ function o7(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,326, 'I32');
+}
+ function o8(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,328, 'I32');
+}
+  function o9(){
+h5gg.clearResults();
+var fz = Number(X[0].start) + 0x428b9d8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xc50;      
+var fz = Number(h5gg.getValue(fz, 'I64')) + 0x660;
+h5gg.setValue(fz,4, 'I32');
+jz3 = Number(X[0].start) + 0x428b9d8;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0xc50;
+jz3 = Number(h5gg.getValue(jz3, 'I64')) + 0x654;                   
+h5gg.setValue(jz3,329, 'I32');
+}
+ 
+    function t1(e){
+Number(element1.value).toFixed(3);
+fz = Number(X[0].start) + 0x449d268;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xf8;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0x7c0;
+fz = Number(h5gg.getValue(fz, 'I64')) + 0xb68;
+h5gg.setValue(fz, element1.value * 256, 'F32');  
+}
+
+
+
+function f1(){
+h5gg.clearResults();
+h5gg.searchNumber('4800', 'F32', '0x00000000', '0x200000000');
+var count = h5gg.getResultsCount();//获取总共搜索结果个数
+var r = h5gg.getResults(count);//获取总共搜索结果个数的数组
+//开始循环遍历
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;//获取每个搜索结果的地址 address弟子 value值 type类型
+var weishu = /C/;//设置置顶结尾
+var pd = weishu.test(addr1);//判断地址是否包含指定结尾
+//进行修改
+if(pd){
+h5gg.setValue(addr1,0, "F32");
+}
+}
+vant.Toast("无限礼包修改成功");
+}
+
+
+  function f2()
+{
+h5gg.clearResults();
+h5gg.searchNumber('2147483647', 'I32', '0x00000000', '0x200000000');
+var amber=prompt("现在琥珀数量，不能低于3");
+h5gg.searchNearby(amber,'I32','0x3');
+var count = h5gg.getResultsCount();//获取总共搜索结果个数
+var r = h5gg.getResults(count);//获取总共搜索结果个数的数组
+//开始循环遍历
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;//获取每个搜索结果的地址 address弟子 value值 type类型
+var weishu = /8/;//设置置顶结尾
+var pd = weishu.test(addr1);//判断地址是否包含指定结尾
+//进行修改
+if(pd){
+h5gg.setValue(addr1,999999999, "I32");
+}
+}
+vant.Toast("无限琥珀修改成功");
+
+}
+      
+ 
+    
+ function f3()
+{
+h5gg.clearResults();
+h5gg.searchNumber('100', 'I32', '0x00000000', '0x200000000');
+var amber=prompt("现在道具数量");
+h5gg.searchNearby(amber,'I32','0x3');
+var count = h5gg.getResultsCount();//获取总共搜索结果个数
+var r = h5gg.getResults(count);//获取总共搜索结果个数的数组
+//开始循环遍历
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;//获取每个搜索结果的地址 address弟子 value值 type类型
+var weishu = /8/;//设置置顶结尾
+var pd = weishu.test(addr1);//判断地址是否包含指定结尾
+//进行修改
+if(pd){
+h5gg.setValue(addr1,500, "I32");
+}
+}
+vant.Toast("无限道具修改成功");
+}
+      
+function f4(){
+h5gg.clearResults(); 
+h5gg.searchNumber('0.6', 'F32', '0x100000000', '0x200000000');
+h5gg.searchNearby('0.05', 'F32', '0x50');
+h5gg.searchNumber('0.05', 'F32', '0x100000000', '0x200000000');
+h5gg.searchNearby('1', 'F32', '0x50');   
+h5gg.editAll('999999999999', 'F32');
+h5gg.editAll('999999999999', 'F32');
+h5gg.editAll('999999999999', 'F32');
+vant.Toast("等级修改成功");
+h5gg.editAll('1', 'F32');}
+
+    
+    function fc() {
+h5gg.clearResults(); 
+h5gg.searchNumber('1106247680', 'I32', '0x100000000', '0x200000000');
+h5gg.searchNearby('4', 'I32', '0x50'); 
+h5gg.searchNumber('1106247680', 'I32', '0x100000000', '0x200000000');
+h5gg.editAll('0', 'I32');
+    }
+
+    
+    
+    function f5(){
+h5gg.clearResults();   
+h5gg.searchNumber('5000', 'I32', '0x00000000', '0x400000000');
+var amber=prompt("输入现在修改材料数量");
+h5gg.searchNearby(amber,'I32','0x3');
+var amber=prompt("输入需要材料数量");
+h5gg.editAll(amber,'I32');
+    }
+    
+ function f6() {
+    h5gg.clearResults();
+    h5gg.searchNumber('0.08152', 'F32', '0x100000000', '0x160000000');
+    h5gg.searchNearby('0.9', 'F32', '0x490');
+    h5gg.editAll('38429', 'F64');
+    h5gg.clearResults();
+    h5gg.searchNumber('0.1285700053', 'F32', '0x100000000', '0x160000000'); 
+    h5gg.searchNearby('0.2', 'F32', '0x50'); 
+    h5gg.editAll('10', 'F32');  
+   vant.Toast("身体颜色修改成功");
+}
+
+</script>
+</body>
+
+</html>
